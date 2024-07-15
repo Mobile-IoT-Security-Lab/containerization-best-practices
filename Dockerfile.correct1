@@ -1,0 +1,14 @@
+# Use a base image
+FROM alpine
+
+# Adding a non-privileged user
+RUN addgroup -S myuser && adduser -S myuser -G myuser
+
+# Example of operations performed as root user (during the build phase)
+RUN apk add --no-cache curl wget
+
+# Changing the execution user for subsequent operations
+USER myuser
+
+# Example of command executed as non-privileged user
+CMD ["sh"]
