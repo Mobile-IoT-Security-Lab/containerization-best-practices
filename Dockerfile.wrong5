@@ -1,0 +1,12 @@
+# Use a basic Python image
+FROM python:3.9
+
+### --- Use ADD to download and extract a URL file ---###
+ADD http://example.com/file.tar.gz /tmp
+###---------------------------------------------------###
+
+#Copy the rest of the application code into the container
+COPY . .
+
+# Specifica il comando per avviare l'applicazione
+CMD ["python", "app.py"]

@@ -1,0 +1,14 @@
+# Use a basic Python image
+FROM python:3.9
+
+### --- Best practice 5: Use RUN to extract a URL file ---###
+RUN curl http://example/file.tar.gz \
+  | tar -xjC /tmp/ file.tar.gz \
+  && make -C /tmp/ file.tar.gz
+###------------------------------------------------------------------###
+
+#Copy the rest of the application code into the container
+COPY . .
+
+# Specifica il comando per avviare l'applicazione
+CMD ["python", "app.py"]
