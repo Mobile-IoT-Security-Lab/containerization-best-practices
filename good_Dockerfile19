@@ -1,0 +1,25 @@
+# Use a basic Python image
+FROM python:3.9
+
+# Set the working directory
+WORKDIR /usr/src/app
+
+# Copy the requirements.txt file into the container
+COPY requirements.txt ./
+
+# Install the dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+### --- Good Practice 19: Use --mount to temporarily access a sensitive file from /etc during the build --- ###
+RUN --mount=type=bind,source=/etc/sensitive_file,target=/usr/src/app/config/sensitive_file \
+    cp /usr/src/app/config/sensitive_file /usr/src/app/sensitive_file_copy
+### ------------------------------------------------------------------------------------------------------- ###
+
+# Remove the sensitive file after use
+RUN rm /usr/src/app/config/sensitive_file
+
+# Copy the rest of the application code into the container
+COPY . .
+
+# Specify the command to run the application
+CMD ["python", "app.py"]
