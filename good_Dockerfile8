@@ -1,0 +1,26 @@
+## -- Best practice 8: Dockerfile with separate instructions for better layer caching -- ##
+
+# Use a minimal base image (alpine is minimal linux distribution)
+FROM alpine:latest
+
+# Update package lists
+RUN apk update
+
+# Install necessary packages individually
+RUN apk add --no-cache \
+    package1 \
+    package2 \
+    package3
+
+# Set environment variables individually
+ENV ENV_VAR1=value1
+ENV ENV_VAR2=value2
+
+# Copy application files
+COPY . /app
+
+# Set working directory
+WORKDIR /app
+
+# Start application
+CMD ["./start.sh"]
