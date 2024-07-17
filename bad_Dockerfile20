@@ -1,0 +1,16 @@
+# Bad Example Dockerfile
+
+FROM ubuntu:latest
+
+# Install necessary packages
+RUN apt-get update && apt-get install -y \
+    nginx \
+    curl \
+    sudo
+
+# Add custom script with elevated permissions
+COPY run-script.sh /usr/local/bin/run-script.sh
+RUN chmod +x /usr/local/bin/run-script.sh
+
+# Vulnerable to privilege escalation
+CMD ["sudo", "/usr/local/bin/run-script.sh"]

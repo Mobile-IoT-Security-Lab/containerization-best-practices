@@ -1,0 +1,17 @@
+## -- Best practice 20: remove permissions from everywhere possible -- ##
+FROM nginx:alpine
+
+# Copy necessary files and set appropriate permissions
+COPY index.html /usr/share/nginx/html/index.html
+RUN chmod 644 /usr/share/nginx/html/index.html
+
+# Secure script execution without unnecessary privileges
+COPY safe-script.sh /usr/local/bin/safe-script.sh
+RUN chmod 755 /usr/local/bin/safe-script.sh
+
+# Use non-root user for enhanced security
+USER nginx
+
+# Start nginx with safe configuration
+CMD ["nginx", "-g", "daemon off;"]
+## ------------------------------------------------------------------- ##
