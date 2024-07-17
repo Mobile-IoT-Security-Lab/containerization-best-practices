@@ -1,0 +1,14 @@
+# Use a minimal and secure base image
+FROM alpine:latest
+
+# Install only necessary packages
+RUN apk update && apk add --no-cache \
+    nginx
+
+# Copy required configuration files
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY index.html /usr/share/nginx/html/index.html
+
+## -- Best practice 17: specify a custom SECCOMP file (nginx-seccomp.json) -- ##
+COPY nginx-seccomp.json /etc/nginx/seccomp.json
+CMD ["nginx", "-g", "daemon off;"]

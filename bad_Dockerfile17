@@ -1,0 +1,9 @@
+# Bad Example Dockerfile
+
+FROM ubuntu:latest
+
+# Install necessary packages
+RUN apt-get update && apt-get install -y 
+
+# No SECCOMP profile specified, relying on default
+CMD ["nginx"]
