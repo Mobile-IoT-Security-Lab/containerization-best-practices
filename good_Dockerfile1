@@ -4,7 +4,7 @@ FROM python:3.9
 # Set the working directory
 WORKDIR /usr/src/app
 
-###--- Best practice 2: Adding a non-privileged user--- ###
+###--- Best practice 1: Adding a non-privileged user--- ###
 RUN addgroup -S myuser && adduser -S myuser -G myuser
 ###----------------------------------------------------###
 
@@ -17,7 +17,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 #Copy the rest of the application code into the container
 COPY . .
 
-####--- Best practice 2: Changing the execution user ---###
+####--- Best practice 1: Changing the execution user ---###
 USER myuser
 ###-----------------------------------------------------###
 
