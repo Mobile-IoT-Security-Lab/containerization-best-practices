@@ -1,7 +1,7 @@
 ## -- Best practice 8: Dockerfile with separate instructions for better layer caching -- ##
 
 # Use a minimal base image (alpine is minimal linux distribution)
-FROM alpine:latest
+FROM alpine:3.20.0
 
 # Update package lists
 RUN apk update
