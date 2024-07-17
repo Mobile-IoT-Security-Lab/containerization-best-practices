@@ -1,0 +1,22 @@
+# Bad Example Dockerfile
+
+# Use a large base image with unnecessary software
+FROM ubuntu:latest
+
+# Install unnecessary packages
+RUN apt-get update && apt-get install -y \
+    curl \
+    wget \
+    net-tools \
+    python \
+    nodejs \
+    default-jdk
+
+# Copy entire directory (including unnecessary files)
+COPY . /app
+
+# Expose unnecessary ports
+EXPOSE 8080 3000
+
+# Run unnecessary startup script
+CMD ["node", "/app/server.js"]
