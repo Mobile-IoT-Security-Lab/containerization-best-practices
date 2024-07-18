@@ -1,0 +1,31 @@
+## -- Best practice 24: The deployment uses specific labels such as role, department, and processing to indicate the type of service (customer), data type (sales), and role (CPU processing). This helps in prioritizing and segregating containers effectively. -- ##
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-application
+  labels:
+    role: customer
+    department: sales
+    processing: cpu
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-application
+      role: customer
+      department: sales
+      processing: cpu
+  template:
+    metadata:
+      labels:
+        app: my-application
+        role: customer
+        department: sales
+        processing: cpu
+    spec:
+      containers:
+      - name: my-container
+        image: my-application-image
+        ports:
+        - containerPort: 8080
