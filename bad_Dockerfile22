@@ -1,0 +1,17 @@
+# Bad Example Dockerfile
+
+FROM ubuntu:latest
+
+# Install necessary packages
+RUN apt-get update && apt-get install -y \
+    nginx \
+    curl
+
+# Copy configuration and content
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY index.html /usr/share/nginx/html/index.html
+
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"]
+
+## -- Container is not set to read-only -- ##
