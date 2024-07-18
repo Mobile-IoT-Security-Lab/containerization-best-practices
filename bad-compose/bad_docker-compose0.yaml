@@ -1,0 +1,6 @@
+version: '3.8'
+
+services:
+  insecure_service:
+    image: alpine
+    privileged: true  # This will grant the container all capabilities
