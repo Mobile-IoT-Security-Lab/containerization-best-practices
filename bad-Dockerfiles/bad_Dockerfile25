@@ -1,0 +1,11 @@
+# Bad Dockerfile example
+FROM ubuntu:20.04
+
+# Install Docker
+RUN apt-get update && apt-get install -y docker.io
+
+# Expose Docker socket
+VOLUME /var/run/docker.sock
+
+# Expose Docker daemon over TCP
+CMD ["dockerd", "-H", "tcp://0.0.0.0:2375"]
