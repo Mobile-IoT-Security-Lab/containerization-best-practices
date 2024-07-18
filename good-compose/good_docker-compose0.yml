@@ -6,4 +6,4 @@ services:
     cap_drop:
       - ALL  # Drop all capabilities
     cap_add:
-      - CHOWN  # Add the CHOWN capability
+      - CHOWN  # Add the necessary capabilities for the service to run
