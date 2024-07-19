@@ -1,15 +1,18 @@
-FROM ubuntu:20.04
+# Use a basic Python image
+FROM python:3.9
 
-RUN apt-get update
+# Set the working directory
+WORKDIR /usr/src/app
 
-# Create a new user named 'privilegeduser' and add it to the sudo group
-RUN useradd -m privilegeduser && echo "privilegeduser:password" | chpasswd && adduser privilegeduser sudo
+# Copy the requirements.txt file into the container
+COPY requirements.txt ./
 
-# Allow 'privilegeduser' to run any command with sudo without a password
-RUN echo "privilegeduser ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+# Install the dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Switch to the new user
-USER privilegeduser
+### --- Bad Practice 27: Using COPY command without specific parameters --- ###
+COPY . .
+### ----------------------------------------------------------------------- ###
 
-# Start a shell as the new user
-CMD [ "bash" ]
+# Specify the command to run the application
+CMD ["python", "app.py"]
