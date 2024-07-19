@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "8080:8080"
+    networks:
+      - frontend
+
+  app:
+    image: ubuntu:20.04
+    command: sleep infinity
+    networks:
+      - backend
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
