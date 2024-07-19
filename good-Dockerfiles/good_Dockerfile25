@@ -1,14 +1,8 @@
-FROM ubuntu:20.04
+## -- Best practice 25: Dockerfile example (using dind) -- ##
+FROM docker:20.10-dind
 
-# Add Docker official GPG key
-RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+# Expose Docker daemon with TLS (Example, requires additional setup)
+# CMD ["dockerd", "--host=tcp://0.0.0.0:2376", "--tlsverify", "--tlscacert=/certs/ca.pem", "--tlscert=/certs/server-cert.pem", "--tlskey=/certs/server-key.pem"]
 
-# Set up Docker repository
-RUN add-apt-repository \
-    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-    $(lsb_release -cs) \
-    stable"
-
-# Install Docker CE
-RUN apt-get update && \
-    apt-get install -y docker-ce docker-ce-cli containerd.io
+# Start Docker-in-Docker daemon (secure version commented out for example)
+CMD ["dockerd"]

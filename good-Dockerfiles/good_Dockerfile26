@@ -1,0 +1,7 @@
+FROM docker:20.10-dind
+
+# Copy certificates
+COPY certs /certs
+
+## -- Best practice 26: expose Docker daemon over TCP with TLS (Transport Layer Security) -- ##
+CMD ["dockerd", "--host=tcp://0.0.0.0:2376", "--tlsverify", "--tlscacert=/certs/ca.pem", "--tlscert=/certs/server-cert.pem", "--tlskey=/certs/server-key.pem"]

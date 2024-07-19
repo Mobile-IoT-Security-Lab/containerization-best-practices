@@ -1,0 +1,6 @@
+FROM ubuntu:20.04
+
+RUN apt-get update && apt-get install -y docker.io
+
+# Bad practice Dockerfile example: start Docker daemon with insecure TCP
+CMD ["dockerd", "-H", "tcp://0.0.0.0:2375"]
