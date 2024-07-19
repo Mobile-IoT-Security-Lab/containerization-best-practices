@@ -1,6 +1,20 @@
-FROM alpine
+# Use a basic Python image
+FROM python:3.9
 
-## -- Best practice 27: set a non-privileged user -- ##
-RUN groupadd -r myuser && useradd -r -g myuser myuser
-#    <HERE DO WHAT YOU HAVE TO DO AS A ROOT USER LIKE INSTALLING PACKAGES ETC.>
-USER myuser
+# Set the working directory
+WORKDIR /usr/src/app
+
+# Copy the requirements.txt file into the container
+COPY requirements.txt ./
+
+# Install the dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+### --- Best Practice 27:  Copy only necessary application code into the container --- ###
+COPY app.py ./
+COPY src/ ./src/
+COPY config/ ./config/
+### ---------------------------------------------------------------------------------- ###
+
+# Specify the command to run the application
+CMD ["python", "app.py"]
