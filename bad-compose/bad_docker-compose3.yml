@@ -1,0 +1,12 @@
+### --- Bad Practice 3: no limit on CPU, memory and restart set to always --- ###
+version: '3.7'
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    environment:
+      - NGINX_HOST=localhost
+      - NGINX_PORT=80
+    restart: always
+### -------------------------------------------------------------------------- ###
