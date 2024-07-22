@@ -1,0 +1,22 @@
+### --- Best Practice 3: limit on CPU, memory and restart not set to always --- ###
+version: '3.7'
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    environment:
+      - NGINX_HOST=localhost
+      - NGINX_PORT=80
+    restart: on-failure:5
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: "512M"
+    ulimits:
+      nofile:
+        soft: 20000
+        hard: 40000
+      nproc: 100
+### ---------------------------------------------------------------------------- ###
