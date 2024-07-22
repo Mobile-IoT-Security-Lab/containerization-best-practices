@@ -1,9 +1,13 @@
-version: '3'
+### --- Good Practice 6: The my_secret secret is defined under the secrets key and refers to the super-secret-data.txt file --- ###
+version: "3.8"
+
+secrets:
+  my_secret:
+    file: ./super-secret-data.txt
+
 services:
   web:
-    image: nginx:1.27.0
-    build: .
-    ### --- Good Practice 6: Map host port 80 to container port 8080 --- ###
-    ports:
-      - "80:8080"  
-    ### ---------------------------------------------------------------- ###
+    image: nginx:latest
+    secrets:
+      - my_secret
+### --------------------------------------------------------------------------------------------------------------------------- ###
