@@ -4,7 +4,7 @@ FROM python:3.9
 # Set the working directory
 WORKDIR /usr/src/app
 
-### --- Bad Practice 34: Install dependencies without sorting multi-line arguments --- ###
+### --- Bad Practice 18: Install dependencies without sorting multi-line arguments --- ###
 RUN apt-get update && apt-get install -y \
   git \
   subversion \
