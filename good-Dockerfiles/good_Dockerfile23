@@ -1,4 +1,4 @@
-### --- Best Practice 31: the python:3.9-slim base image is an official Docker image --- ###
+### --- Best Practice 23: the python:3.9-slim base image is an official Docker image --- ###
 FROM python:3.9-slim
 ### ------------------------------------------------------------------------------------ ###
 
