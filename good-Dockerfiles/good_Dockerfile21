@@ -10,7 +10,7 @@ COPY requirements.txt ./
 # Install the dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-### --- Best Practice 33: Copy the code of the application in the container at the end,
+### --- Best Practice 21: Copy the code of the application in the container at the end,
 ### --- since it changes more frequently --- ###
 COPY . .
 ### ---------------------------------------- ###
