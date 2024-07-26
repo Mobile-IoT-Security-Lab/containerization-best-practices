@@ -4,7 +4,7 @@ FROM python:3.9
 # Set the working directory
 WORKDIR /usr/src/app
 
-### --- Bad Practice 33: Whenever any file in the application changes, the entire process of installing dependencies must be repeated --- ###
+### --- Bad Practice 21: Whenever any file in the application changes, the entire process of installing dependencies must be repeated --- ###
 COPY . .
 ### ------------------------------------------------------------------------------------------------------------------------------------- ###
 
