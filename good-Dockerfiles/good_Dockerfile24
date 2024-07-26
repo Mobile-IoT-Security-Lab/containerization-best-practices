@@ -1,4 +1,4 @@
-### --- Best Practice 30: Multi-stage images are used to separate the build process from the final runtime image --- ###
+### --- Best Practice 24: Multi-stage images are used to separate the build process from the final runtime image --- ###
 
 # Build phase
 FROM golang:1.16 AS builder
