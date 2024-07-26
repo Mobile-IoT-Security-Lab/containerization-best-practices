@@ -4,7 +4,7 @@ FROM python:3.9
 # Set the working directory
 WORKDIR /usr/src/app
 
-### --- Good Practice 34: Install dependencies sorting multi-line arguments --- ###
+### --- Good Practice 18: Install dependencies sorting multi-line arguments --- ###
 RUN apt-get update && apt-get install -y \
   bzr \
   cvs \
