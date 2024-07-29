@@ -1,0 +1,20 @@
+# Bad Dockerfile example
+
+# Use a generic base image
+FROM ubuntu:latest
+
+# Set Docker daemon logging level to debug
+RUN sed -i 's/DOCKER_OPTS=.*/DOCKER_OPTS="--log-level debug"/g' /etc/default/docker
+
+# Install unnecessary packages
+RUN apt-get update && apt-get install -y \
+    vim \
+    curl \
+    net-tools \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy unnecessary files
+COPY . /app
+
+# Start the application with no regard for security
+CMD ["python", "app.py"]
