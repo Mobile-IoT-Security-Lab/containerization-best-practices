@@ -1,0 +1,20 @@
+### --- Bad Practice 16: do not ensure network traffic is restricted between containers on the default bridge --- ###
+version: '3.8'
+
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    networks:
+      - default
+
+  db:
+    image: postgres:latest
+    networks:
+      - default
+
+networks:
+  default:
+    driver: bridge
+### -------------------------------------------------------------------------------------------------------------- ###
