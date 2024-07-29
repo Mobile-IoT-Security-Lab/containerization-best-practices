@@ -1,0 +1,10 @@
+FROM ubuntu
+
+# Install necessary packages
+RUN apt-get update && apt-get install -y 
+
+# Copy application code
+COPY . /app
+
+# Expose port for application
+EXPOSE 80
