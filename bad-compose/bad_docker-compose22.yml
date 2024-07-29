@@ -1,0 +1,19 @@
+# Bad Dockerfile example - Poor documentation of image provenance
+
+FROM ubuntu:latest
+
+# Install necessary packages without specifying versions or sources
+RUN apt-get update && apt-get install -y \
+    python3 \
+    nginx \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy application code without indicating its origin or version
+COPY . /app
+
+# Expose port
+EXPOSE 80
+
+# Start nginx without any version or configuration details
+CMD ["nginx", "-g", "daemon off;"]

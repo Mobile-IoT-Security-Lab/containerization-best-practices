@@ -1,0 +1,28 @@
+## -- Best practice 22: documenting image provenance effectively -- ##
+
+# Start with a specific and trusted base image
+FROM python:3.9-slim
+
+# Metadata indicating image maintainer and source
+LABEL maintainer="yourname@example.com"
+LABEL source="https://github.com/yourusername/yourproject"
+
+# Install necessary packages with specific versions and sources
+RUN apt-get update && apt-get install -y \
+    nginx=1.20.* \
+    curl=7.74.* \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy application code with clear indication of its origin and version
+COPY . /app
+
+# Expose port for nginx
+EXPOSE 80
+
+# Start nginx with specified configuration and version
+CMD ["nginx", "-g", "daemon off;"]
+
+# Additional metadata documenting image version and build timestamp
+LABEL version="1.0"
+LABEL description="Web application using Python and nginx"
+LABEL build_date="2024-07-18"
