@@ -1,0 +1,8 @@
+FROM ubuntu:20.04
+
+# Bad example: OS package is not pinned to a specific version
+RUN apt-get update && apt-get install -y curl
+
+COPY myapp /usr/local/bin/myapp
+
+CMD ["myapp"]
