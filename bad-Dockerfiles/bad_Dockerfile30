@@ -1,0 +1,9 @@
+# Bad Dockerfile example: using ADD, which can fetch remote URLs and handle tar extraction
+ FROM ubuntu:20.04
+
+ RUN apt-get update && apt-get install -y curl=7.68.0-1ubuntu2.6
+
+
+ ADD myapp.tar.gz /usr/local/bin/
+
+ CMD ["/usr/local/bin/myapp"]

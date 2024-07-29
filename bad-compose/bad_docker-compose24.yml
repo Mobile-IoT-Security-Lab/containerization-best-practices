@@ -1,10 +1,11 @@
-FROM ubuntu
-
-# Install necessary packages
-RUN apt-get update && apt-get install -y 
-
-# Copy application code
-COPY . /app
-
-# Expose port for application
-EXPOSE 80
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - .:/app
+    command: python /app/app.py

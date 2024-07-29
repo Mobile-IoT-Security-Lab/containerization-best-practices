@@ -1,19 +1,25 @@
-# Bad Dockerfile example - Poor documentation of image provenance
+# Bad Docker-compose example - Poor documentation of image provenance, misconfigured or missing Docker daemon log level configuration
+version: '3.8'
 
-FROM ubuntu:latest
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    command: ["nginx", "-g", "daemon off;"]
 
-# Install necessary packages without specifying versions or sources
-RUN apt-get update && apt-get install -y \
-    python3 \
-    nginx \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
-
-# Copy application code without indicating its origin or version
-COPY . /app
-
-# Expose port
-EXPOSE 80
-
-# Start nginx without any version or configuration details
-CMD ["nginx", "-g", "daemon off;"]
+  app:
+    image: myapp:latest
+    ports:
+      - "8080:8080"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    command: ["sh", "-c", "echo 'Running app...' && sleep 300"]

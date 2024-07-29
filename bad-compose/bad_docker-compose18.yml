@@ -1,8 +1,10 @@
-FROM ubuntu:20.04
-
 # Bad example: OS package is not pinned to a specific version
-RUN apt-get update && apt-get install -y curl
 
-COPY myapp /usr/local/bin/myapp
+version: '3.8'
 
-CMD ["myapp"]
+services:
+  myservice:
+    build: .
+    image: ubuntu:latest
+    container_name: ubuntu_container
+    command: ["ubuntu", "echo", "Hello World"]

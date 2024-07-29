@@ -1,7 +1,6 @@
-FROM ubuntu:20.04
+version: '3.8'
 
-RUN apt-get update && apt-get install -y curl
-
-COPY myapp /usr/local/bin/myapp
-
-CMD ["myapp"]
+services:
+  app:
+    image: alpine
+    command: ["echo", "Hello World"]

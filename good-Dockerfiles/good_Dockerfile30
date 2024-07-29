@@ -2,9 +2,7 @@ FROM ubuntu:20.04
 
 RUN apt-get update && apt-get install -y curl=7.68.0-1ubuntu2.6
 
-#Bad example: curl bashing: downloading and executing a script directly
-RUN curl -sL https://example.com/install.sh | bash
-
+# -- Best practice 30: using COPY, which is more secure and simpler than ADD -- ##
 COPY myapp /usr/local/bin/
 
 CMD ["/usr/local/bin/myapp"]
