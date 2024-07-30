@@ -1,6 +1,6 @@
 version: '3.8'
 
-## -- Best practice 26: secure deployments -- ##
+## -- Best practice 19: secure deployments -- ##
 services:
   myapp:
     image: your-registry.example.com/myapp-web:1.0
