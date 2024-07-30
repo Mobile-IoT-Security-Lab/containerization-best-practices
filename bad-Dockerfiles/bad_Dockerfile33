@@ -1,0 +1,8 @@
+FROM ubuntu:latest
+
+### --- Best Practice 33: Mount a sensitive directory --- ###
+VOLUME ["/etc"]
+### ----------------------------------------------------- ###
+
+CMD ["bash"]
+
