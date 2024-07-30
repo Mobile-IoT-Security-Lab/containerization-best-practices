@@ -1,21 +1,14 @@
-## -- Best practice 10: Dockerfile using a trusted base image source -- ##
-FROM debian:bullseye-slim
-## -------------------------------------------------------------------- ##
+## -- Best practice 10: Dockerfile using a trusted base image source (iron bank: https://repo1.dso.mil/dsop/canonical/ubuntu/lts-20.04/ubuntu-lts-20.04/-/blob/development/Dockerfile?ref_type=heads) -- ##
+ARG BASE_REGISTRY=registry1.dso.mil
+ARG BASE_IMAGE=ironbank/redhat/ubi/ubi8
+ARG BASE_TAG=8.7
 
-# Update package lists and install verified dependencies
-RUN apt-get update && apt-get install -y \
-    trusted-package1 \
-    trusted-package2 \
-    trusted-package3 \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+FROM ${BASE_REGISTRY}/${BASE_IMAGE}:${BASE_TAG}
 
-# Set environment variables
-ENV ENV_VAR1=value1 ENV_VAR2=value2
+RUN dnf update -y --nodocs && \
+    dnf clean all && \
+    rm -rf /var/cache/dnf
 
-# Copy application files
-COPY . /app
+HEALTHCHECK NONE
 
-# Set working directory and start application
-WORKDIR /app
-CMD ["./start.sh"]
+USER nobody
