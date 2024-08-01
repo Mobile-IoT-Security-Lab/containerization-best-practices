@@ -1,0 +1,7 @@
+### --- Bad Practice 29: No limitations on file descriptors --- ###
+version: '3.8'
+
+services:
+  web_server:
+    image: nginx:latest
+### ----------------------------------------------------------- ###
