@@ -1,0 +1,14 @@
+### --- Best Practice 27: limit memory usage --- ###
+version: '3.8'
+
+services:
+  web:
+    image: nginx:latest
+    container_name: mywebapp
+    ports:
+      - "8080:80"
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+### -------------------------------------------- ###

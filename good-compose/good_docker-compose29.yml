@@ -1,0 +1,11 @@
+### --- Best Practice 29: Soft and Hard limit for file descriptors --- ###
+version: '3.8'
+
+services:
+  web_server:
+    image: nginx:latest
+    ulimits:
+      nofile:
+        soft: 1024  
+        hard: 2048  
+### ------------------------------------------------------------------ ###
