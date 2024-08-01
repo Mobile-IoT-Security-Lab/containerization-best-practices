@@ -25,3 +25,6 @@ networks:
 
   app3_net:
     driver: bridge
+
+  internal_net:
+    internal: false
