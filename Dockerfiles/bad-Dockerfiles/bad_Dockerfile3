@@ -1,7 +1,7 @@
 # Use a basic Python image
 FROM python:3.9
 
-### --- Bad Practice 36: Create and change working directory with RUN command --- ###
+### --- Bad Practice 3: Create and change working directory with RUN command --- ###
 RUN mkdir -p app
 RUN cd app && \
     pip install --no-cache-dir -r ../requirements.txt
