@@ -4,7 +4,7 @@ FROM python:3.9
 # Set the working directory
 WORKDIR /usr/src/app
 
-### --- Use ADD to extract a local file ---###
+### --- Bad Practice 4: Use ADD to extract a local file ---###
 ADD file.tar.gz .
 ###----------------------------------------###
 
