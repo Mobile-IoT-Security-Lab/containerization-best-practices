@@ -1,4 +1,4 @@
-# Bad Example Dockerfile
+### --- Bad Practice 22: Container root FS is not Mounted as Read-Only --- ###
 
 FROM ubuntu:latest
 
