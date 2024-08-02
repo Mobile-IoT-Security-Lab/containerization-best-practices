@@ -1,6 +1,6 @@
-### --- Use a specific version of the Python image --- ###
+### --- Best Practice 32: Use a specific version of the Python image --- ###
 FROM python:3.9.7
-### -------------------------------------------------- ###
+### -------------------------------------------------------------------- ###
 
 # Set the working directory
 WORKDIR /usr/src/app
