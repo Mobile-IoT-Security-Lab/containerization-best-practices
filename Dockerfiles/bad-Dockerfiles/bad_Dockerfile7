@@ -1,4 +1,4 @@
-## -- BAD EXAMPLE: Dockerfile without HEALTHCHECK instruction -- ##
+## -- BAD Practice 7: Dockerfile without HEALTHCHECK instruction -- ##
 
 FROM nginx:latest
 
