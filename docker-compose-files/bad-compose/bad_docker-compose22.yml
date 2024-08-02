@@ -1,4 +1,4 @@
-# Bad Docker-compose example - Poor documentation of image provenance, misconfigured or missing Docker daemon log level configuration
+### --- Bad Practice 22: Poor documentation of image provenance, misconfigured or missing Docker daemon log level configuration --- ###
 version: '3.8'
 
 services:
