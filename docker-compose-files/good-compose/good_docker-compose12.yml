@@ -1,4 +1,4 @@
-## -- Best practice 24: The deployment uses specific labels such as role, department, and processing to indicate the type of service (customer), data type (sales), and role (CPU processing). This helps in prioritizing and segregating containers effectively. -- ##
+## -- Best practice 12: The deployment uses specific labels such as role, department, and processing to indicate the type of service (customer), data type (sales), and role (CPU processing). This helps in prioritizing and segregating containers effectively. -- ##
 
 apiVersion: apps/v1
 kind: Deployment
