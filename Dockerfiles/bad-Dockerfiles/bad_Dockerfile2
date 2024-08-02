@@ -1,3 +1,4 @@
+### --- Bad Practice 2: Do not remove setuid and setgid permissions on executables --- ###
 # Use a basic Python image
 FROM python:3.9
 
