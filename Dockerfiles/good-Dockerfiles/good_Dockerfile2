@@ -4,7 +4,7 @@ FROM python:3.9
 # Set the working directory
 WORKDIR /usr/src/app
 
-###--- Best practice 3: remove setuid and segid ---###
+###--- Best practice 2: remove setuid and segid ---###
 RUN find / -perm +6000 -type f -exec chmod a-s {} \; || true
 ###------------------------------------------------###
 
