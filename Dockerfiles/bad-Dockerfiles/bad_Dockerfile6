@@ -1,8 +1,8 @@
 FROM nginx:latest
 
-## --- Bad command ------------- ## 
+### --- Bad Practice 6: Expose a privileged Port --- ### 
 EXPOSE 80
-## ----------------------------- ##
+### ------------------------------------------------ ###
 
 # Run Nginx in the foreground
 CMD ["nginx", "-g", "daemon off;"]
