@@ -1,4 +1,4 @@
-### --- Good Practice 4: sets the container filesystem to read-only, preventing any changes to the container files.
+### --- Best Practice 4: sets the container filesystem to read-only, preventing any changes to the container files.
 ### --- Mounts a temporary (in memory) filesystem in the /tmp path, allowing temporary write operations. --- ###
 version: '3.7'
 services:
