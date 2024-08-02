@@ -1,4 +1,4 @@
-# Bad Dockerfile example
+### --- Bad Practice 25: expose the Docker daemon socket --- ###
 FROM ubuntu:20.04
 
 # Install Docker
