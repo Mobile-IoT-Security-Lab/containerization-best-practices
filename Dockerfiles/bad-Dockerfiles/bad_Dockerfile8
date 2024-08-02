@@ -1,4 +1,4 @@
-# BAD EXAMPLE: Dockerfile with multiple instructions in a single line
+### --- BAD Practice 8: Dockerfile with multiple instructions in a single line --- ###
 
 # Use a base image with unnecessary packages
 FROM ubuntu:latest
