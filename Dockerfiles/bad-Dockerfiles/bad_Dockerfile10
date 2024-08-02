@@ -1,6 +1,6 @@
-## -- BAD EXAMPLE: Dockerfile using an untrusted base image source -- ##
+### --- BAD Practice 10: Dockerfile using an untrusted base image source --- ###
 FROM evil_company/evil_app:latest
-## ------------------------------------------------------------------ ##
+### ------------------------------------------------------------------------ ###
 
 # Install dependencies without verification
 RUN apt-get update && apt-get install -y \
