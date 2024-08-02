@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-### --- Best Practice 33: Mount a sensitive directory --- ###
+### --- Bad Practice 33: Mount a sensitive directory --- ###
 VOLUME ["/etc"]
 ### ----------------------------------------------------- ###
 
