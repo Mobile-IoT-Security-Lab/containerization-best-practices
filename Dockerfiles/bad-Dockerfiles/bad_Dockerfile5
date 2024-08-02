@@ -1,7 +1,7 @@
 # Use a basic Python image
 FROM python:3.9
 
-### --- Use ADD to download and extract a URL file ---###
+### --- Bad Practice 5: Use ADD to download and extract a URL file ---###
 ADD http://example.com/file.tar.gz /tmp
 ###---------------------------------------------------###
 
