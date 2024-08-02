@@ -1,0 +1,6 @@
+### --- Bad Practice 34: Do not ensure that container health is checked at runtime --- ###
+version: '3'
+
+services:
+  app:
+    image: nginx:latest
