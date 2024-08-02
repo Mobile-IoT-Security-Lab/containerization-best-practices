@@ -1,3 +1,4 @@
+### --- Bad practice 20: do not use a trusted registry
 version: '3'
 services:
   my_app:
