@@ -1,3 +1,4 @@
+## -- Bad practice 24: do not sign the Docker image with GPG key -- ##
 version: '3'
 services:
   web:
