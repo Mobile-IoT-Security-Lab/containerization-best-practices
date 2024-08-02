@@ -1,4 +1,4 @@
-### --- Bad Practice 35: Use a basic Alpine image with a version tag and without pinning it --- ###
+### --- Bad Practice 16: Use a basic Alpine image with a version tag and without pinning it --- ###
 FROM alpine:3.19
 ### ------------------------------------------------------------------------------------------- ###
 
