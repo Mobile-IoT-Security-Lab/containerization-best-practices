@@ -1,3 +1,4 @@
+### Bad Practice 1: container image executed as root user --- ###
 # Use a basic Python image
 FROM python:3.9
 
