@@ -1,4 +1,4 @@
-### --- Best Practice 31: Ensure that incoming container traffic is bound to a specific host interface --- ###
+### --- Best Practice 30: Ensure that incoming container traffic is bound to a specific host interface --- ###
 version: '3.8'
 
 services:
