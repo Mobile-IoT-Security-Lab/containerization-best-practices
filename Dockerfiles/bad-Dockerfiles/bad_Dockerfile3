@@ -1,7 +1,7 @@
 # Use a basic Python image
 FROM python:3.9
 
-### --- Bad Practice 3: Create and change working directory with RUN command --- ###
+### --- Bad Practice 3: Do not use absolute paths for WORKDIR --- ###
 WORKDIR usr/src/app
 ### ----------------------------------------------------------------------------- ###
 
