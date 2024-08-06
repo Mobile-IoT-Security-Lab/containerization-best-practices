@@ -4,6 +4,6 @@
  RUN apt-get update && apt-get install -y curl=7.68.0-1ubuntu2.6
 
 
- ADD myapp.tar.gz /usr/local/bin/
+ ADD myapp /usr/local/bin/
 
  CMD ["/usr/local/bin/myapp"]
