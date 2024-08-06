@@ -1,1 +1,2 @@
-
+### --- Best Practice 0: Restricting Containers from Acquiring New Privileges
+docker run --security-opt=no-new-privileges ...
