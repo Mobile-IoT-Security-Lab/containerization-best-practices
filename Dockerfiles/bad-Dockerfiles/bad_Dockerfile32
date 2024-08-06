@@ -1,5 +1,6 @@
 ### --- Bad Practice 32: Use the latest available Python image --- ###
 FROM python:latest
+#Another error: FROM python
 ### -------------------------------------------------------------- ###
 
 # Set the working directory
