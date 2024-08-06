@@ -1,1 +1,2 @@
-
+### --- Bad Practice 0: Do not restrict Containers from Acquiring New Privileges --- ###
+docker run -d --name mycontainer myimage
