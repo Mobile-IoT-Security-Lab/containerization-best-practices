@@ -1,9 +1,9 @@
-# Bad Dockerfile example: using ADD, which can fetch remote URLs and handle tar extraction
- FROM ubuntu:20.04
+FROM ubuntu:20.04
 
- RUN apt-get update && apt-get install -y curl=7.68.0-1ubuntu2.6
+RUN apt-get update && apt-get install -y curl=7.68.0-1ubuntu2.6
 
+### --- Bad Practice 30 : use ADD for files and folders --- ###
+ADD myapp /usr/local/bin/
+### ------------------------------------------------------- ###
 
- ADD myapp /usr/local/bin/
-
- CMD ["/usr/local/bin/myapp"]
+CMD ["/usr/local/bin/myapp"]
