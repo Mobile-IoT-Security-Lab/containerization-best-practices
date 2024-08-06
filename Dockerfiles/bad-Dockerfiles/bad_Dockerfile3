@@ -2,13 +2,7 @@
 FROM python:3.9
 
 ### --- Bad Practice 3: Create and change working directory with RUN command --- ###
-RUN mkdir -p app
-RUN cd app && \
-    pip install --no-cache-dir -r ../requirements.txt
-
-# Copy the source code to your working directory
-RUN cd app && \
-    cp -r ../src/* .
+WORKDIR usr/src/app
 ### ----------------------------------------------------------------------------- ###
 
 # Specify the command to run the application
