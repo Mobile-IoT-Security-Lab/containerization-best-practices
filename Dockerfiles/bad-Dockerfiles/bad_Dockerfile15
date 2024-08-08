@@ -1,7 +1,6 @@
-# Bad Example Dockerfile
-
-# Use a generic and potentially outdated base image
+### --- Bad Practice 15: Use a generic and potentially outdated base image ---  ###
 FROM ubuntu:14.4
+### --------------------------------------------------------------------------- ###
 
 # Install necessary packages
 RUN apt-get update && apt-get install -y \
