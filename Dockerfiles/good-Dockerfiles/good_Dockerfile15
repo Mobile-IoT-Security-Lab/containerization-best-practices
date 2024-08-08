@@ -1,5 +1,3 @@
-
-
 ## -- Bestpractice 15:  Use a minimal and specific base image -- ##
 FROM nginx:alpine
 ## ------------------------------------------------------------- ##
