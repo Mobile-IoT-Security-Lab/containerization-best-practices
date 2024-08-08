@@ -1,0 +1,4 @@
+FROM busybox
+### --- Best Practice 38: Do not use sudo command --- ###
+RUN apt-get install
+### ------------------------------------------------- ###
