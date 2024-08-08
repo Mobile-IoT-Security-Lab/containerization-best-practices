@@ -5,7 +5,7 @@ FROM python:3.9
 WORKDIR /usr/src/app
 
 ###--- Best practice 2: remove setuid and segid ---###
-RUN find / -perm +6000 -type f -exec chmod a-s {} \; || true
+RUN find /usr -perm /6000 -type f -exec chmod a-s {} \; || true
 ###------------------------------------------------###
 
 # Copy the requirements.txt file into the container
