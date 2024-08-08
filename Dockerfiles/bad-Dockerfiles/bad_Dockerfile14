@@ -10,10 +10,12 @@ COPY requirements.txt ./
 # Install the dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-### --- Bad Practice 14: Set environment variables with embedded credentials --- ###
+### --- Bad Practice 14: Adding sensitive data --- ###
 ENV DATABASE_USER=admin
 ENV DATABASE_PASSWORD=mysecretpassword
 ### ---------------------------------------------------------------------------- ###
+
+RUN ./get-data.sh
 
 # Copy the rest of the application code into the container
 COPY . .
