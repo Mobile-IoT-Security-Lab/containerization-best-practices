@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 ### --- Best Practice 14: Mount and read the secret --- ###
 RUN --mount=type=secret,id=mysecret,dst=/run/secrets/mysecret cat /run/secrets/mysecret
-### -------------------------------------------------- ###
+### --------------------------------------------------- ###
 
 # Copy the rest of the application code into the container
 COPY . .
