@@ -11,9 +11,11 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 ### --- Bad Practice 9: Adding sensitive data --- ###
-ENV DATABASE_PASSWORD="mysecretpassword"
-RUN echo "DATABASE_PASSWORD=mysecretpassword" >> /etc/environment
+ARG DATABASE_USER
+ARG DATABASE_PASSWORD
 ### --------------------------------------------- ###
+
+RUN ./get-data.sh
 
 # Copy the rest of the application code into the container
 COPY . .
