@@ -1,4 +1,4 @@
-version: '3.8'
+# bad practice 14: seccomp=unconfined is a security risk
 
 services:
   app:

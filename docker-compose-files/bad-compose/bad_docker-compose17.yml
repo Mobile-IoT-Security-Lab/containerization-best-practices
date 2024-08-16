@@ -1,4 +1,5 @@
-version: '3.8'
+# bad practice 17: 
+
 services:
   myservice:
     build: .

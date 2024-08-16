@@ -30,10 +30,10 @@ docker-compose up --build
 
 # Run the dockle tests
 echo; echo
-echo '\033[1m DOCKLE RESULTS: \033[0m'
+echo '\033[1m DOCKLE RESULTS for the $2 image: \033[0m'
 docker images | awk 'NR>1{print $1}' | xargs dockle
 
 # Run the trivy tests
 echo; echo
-echo '\033[1m TRIVY RESULTS: \033[0m'
+echo '\033[1m TRIVY RESULTS for the $2 image: \033[0m'
 docker images | awk 'NR>1{print $3}' | xargs trivy image

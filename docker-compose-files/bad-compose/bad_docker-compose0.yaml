@@ -1,4 +1,4 @@
-### --- Best Practice 0: do not limit capabilities --- ###
+### --- Bad Practice 0: do not limit capabilities --- ###
 version: '3.8'
 
 services:

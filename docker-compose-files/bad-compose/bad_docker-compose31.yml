@@ -1,4 +1,4 @@
-version: '3.8'
+# bad practice 31: Misuse of ulimits settings - incorrect configuration options
 
 services:
   web:

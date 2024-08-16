@@ -1,4 +1,4 @@
-### --- Bad PRactice 15 --- ###
+### --- Bad Practice 15 --- ###
 version: '3.8'
 
 services:
