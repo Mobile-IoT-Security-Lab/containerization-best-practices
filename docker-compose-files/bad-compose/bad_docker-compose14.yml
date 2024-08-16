@@ -1,8 +1,0 @@
-# bad practice 14: seccomp=unconfined is a security risk
-
-services:
-  app:
-    image: alpine
-    command: ["sh", "-c", "while true; do echo Hello; sleep 3600; done"]
-    security_opt:
-      - "seccomp=unconfined" # bad practice: seccomp=unconfined is a security risk

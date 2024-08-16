@@ -1,7 +1,0 @@
-### --- Bad Practice 3: no limit on number of processes --- ###
-version: '3.8'
-
-services:
-  web_server:
-    image: nginx:latest
-### ------------------------------------------------------- ###

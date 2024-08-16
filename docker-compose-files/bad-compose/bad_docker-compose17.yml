@@ -1,8 +1,0 @@
-# bad practice 17: 
-
-services:
-  myservice:
-    build: .
-    image: ubuntu
-    container_name: ubuntu_container
-    command: ["ubuntu", "echo", "Hello World"]

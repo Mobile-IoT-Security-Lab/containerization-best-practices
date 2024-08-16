@@ -1,9 +1,0 @@
-### --- Best Practice 3: limit on number of processes --- ###
-version: '3.8'
-
-services:
-  web_server:
-    image: nginx:latest
-    ulimits:
-      nproc: 100  
-### ------------------------------------------------------- ###

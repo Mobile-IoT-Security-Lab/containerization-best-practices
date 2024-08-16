@@ -1,8 +1,0 @@
-### --- Best Practice 8: Do not share the Host’s Network Namespace --- ###
-version: '3.8'
-services:
-  myapp:
-    image: myapp-image
-    ports:
-      - "80:8080"
-### ------------------------------------------------------------------ ###

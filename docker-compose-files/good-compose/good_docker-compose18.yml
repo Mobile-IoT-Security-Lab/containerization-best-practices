@@ -1,8 +1,0 @@
-FROM ubuntu:20.04
-
-## -- Best practice 18: pin the versions of the OS packages -- ##
-RUN apt-get update && apt-get install -y curl=7.68.0-1ubuntu2.6
-
-COPY myapp /usr/local/bin/myapp
-
-CMD ["myapp"]

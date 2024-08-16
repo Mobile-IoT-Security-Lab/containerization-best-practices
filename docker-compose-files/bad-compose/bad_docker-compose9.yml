@@ -1,9 +1,0 @@
-### --- Bad Practice 9: Docker socket is mounted inside containers --- ###
-version: '3'
-services:
-  web:
-    image: nginx:latest
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    ports:
-      - "80:80"

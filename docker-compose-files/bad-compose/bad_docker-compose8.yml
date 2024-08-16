@@ -1,7 +1,0 @@
-### --- Bad Practice 8: Share the Host’s Network Namespace --- ###
-version: '3.8'
-services:
-  myapp:
-    image: myapp-image
-    network_mode: host
-### ---------------------------------------------------------- ###

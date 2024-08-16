@@ -1,9 +1,0 @@
-version: '3.7'
-
-services:
-  web:
-    image: "nginx:alpine"
-    ports:
-      - "8080:8000"
-    security_opt:
-      - no-new-privileges: true

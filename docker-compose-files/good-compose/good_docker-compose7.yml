@@ -1,9 +1,0 @@
-### Best Practice 7: If the container stops with an error, Docker will attempt to restart it up to 5 times before stopping --- ###
-version: '3.8'
-services:
-  myapp:
-    image: myapp-image
-    restart: on-failure:5
-    ports:
-      - "80:80"
-### -------------------------------------------------------------------------------------------------------------------------- ###
