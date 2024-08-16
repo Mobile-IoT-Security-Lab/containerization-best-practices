@@ -1,0 +1,10 @@
+# bad practice 31: Misuse of ulimits settings - incorrect configuration options
+
+services:
+  web:
+    image: myapp
+    ulimits:
+      nproc: 1000
+      nofile: 2048
+    # Misuse of ulimits settings - incorrect configuration options
+    # Limits should be specified as soft and hard limits, not just values

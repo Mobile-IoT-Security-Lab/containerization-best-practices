@@ -1,0 +1,10 @@
+### --- Best Practice 5: Appending :ro to the end of the volume specifies that the volume is mounted read-only --- ###
+version: '3.7'
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./data:/data:ro
+### -------------------------------------------------------------------------------------------------------------- ###

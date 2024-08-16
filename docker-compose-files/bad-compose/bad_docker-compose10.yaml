@@ -1,0 +1,7 @@
+# "bad" example: no resource requests
+version: '3.8'
+services:
+  my-application:
+    image: my-application-image
+    ports:
+      - "8080:80"

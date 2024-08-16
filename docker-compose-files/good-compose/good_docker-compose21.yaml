@@ -1,0 +1,6 @@
+# Use a minimal and secure base image
+FROM alpine:latest
+
+## -- Best practice 21:  Ensure Docker daemon logging level is set to info -- ##
+RUN mkdir -p /etc/docker
+RUN echo '{ "log-driver": "json-file", "log-opts": { "max-size": "10m", "max-file": "3", "labels": "production_status" }}' > /app/log.json example,tell me

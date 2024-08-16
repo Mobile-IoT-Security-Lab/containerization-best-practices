@@ -1,0 +1,10 @@
+### --- Bad Practice 6: The SECRET_KEY variable directly contains the sensitive data my_super_secret_password, 
+### --- which is visible to anyone with access to the docker-compose.yml file or the execution environment logs --- ###
+version: "3.8"
+
+services:
+  web:
+    image: nginx:latest
+    environment:
+      - SECRET_KEY=my_super_secret_password
+### --------------------------------------------------------------------------------------------------------------- ###

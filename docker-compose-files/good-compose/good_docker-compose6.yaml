@@ -1,0 +1,13 @@
+### --- Good Practice 6: The my_secret secret is defined under the secrets key and refers to the super-secret-data.txt file --- ###
+version: "3.8"
+
+secrets:
+  my_secret:
+    file: ./super-secret-data.txt
+
+services:
+  web:
+    image: nginx:latest
+    secrets:
+      - my_secret
+### --------------------------------------------------------------------------------------------------------------------------- ###

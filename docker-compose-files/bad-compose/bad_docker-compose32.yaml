@@ -1,0 +1,10 @@
+### --- Bad Practice 32: host's /dev/tty0 device is exposed to the container with read, write and mknod permissions --- ###
+version: '3'
+
+services:
+  app:
+    image: ubuntu:latest
+    devices:
+      - "/dev/tty0:/dev/tty0:rwm"
+    command: bash
+### ------------------------------------------------------------------------------------------------------------------- ###

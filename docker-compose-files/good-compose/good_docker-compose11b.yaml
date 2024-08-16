@@ -1,0 +1,16 @@
+### --- Good Practice 11b: verified packages --- ###
+version: '3'
+services:
+  web:
+    image: customweb:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    environment:
+      - NODE_ENV=production
+    # Optionally,  add build arguments for secure APT keys (assuming Dockerfile is following the best practice)
+    # GPG_KEY is used by the Dockerfile
+    args:
+      - GPG_KEY=ABC123DEF456GHI789

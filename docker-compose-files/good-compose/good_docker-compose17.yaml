@@ -1,0 +1,8 @@
+## -- Best practice 17: pin versions in Dockerfile -- ##
+FROM ubuntu:20.04
+
+RUN apt-get update && apt-get install -y curl=7.68.0-1ubuntu2.6
+
+COPY myapp /usr/local/bin/myapp
+
+CMD ["myapp"]

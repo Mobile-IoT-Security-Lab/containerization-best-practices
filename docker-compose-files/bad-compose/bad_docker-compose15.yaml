@@ -1,0 +1,7 @@
+### --- Bad Practice 15 --- ###
+version: '3.8'
+
+services:
+  app:
+    image: alpine
+    command: ["echo", "Hello World"]

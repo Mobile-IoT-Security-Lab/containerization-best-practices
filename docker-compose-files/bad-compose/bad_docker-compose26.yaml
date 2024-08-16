@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  web:
+    image: nginx:latest
+    container_name: mywebapp
+    ports:
+      - "80:80"    # Bad Practice 26: expose  unnecessary ports
+      - "443:443"  # Bad Practice 26: expose unecessary ports
+      - "8080:8080"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf

@@ -1,0 +1,8 @@
+### --- Bad Practice 1: allow in-container privilege escalation --- ###
+version: '3.7'
+
+services:
+  web:
+    image: "nginx:latest"
+    ports:
+      - "8080:8000"
