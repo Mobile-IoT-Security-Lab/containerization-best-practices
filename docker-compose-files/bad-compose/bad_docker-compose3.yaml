@@ -4,4 +4,6 @@ version: '3.8'
 services:
   web_server:
     image: nginx:latest
+    environment:
+      - TERM=dumb
 ### ------------------------------------------------------- ###

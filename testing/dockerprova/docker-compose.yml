@@ -1,10 +1,14 @@
-### --- Best Practice 0: limit capabilities --- ###
-version: '3.8'  # Specify the version of the Docker Compose file
-
+### --- Best Practice 3: limit on number of processes --- ###
 services:
-  example_service:
-    image: alpine
-    cap_drop:
-      - ALL  # Drop all capabilities
-    cap_add:
-      - CHOWN  # Add the necessary capabilities for the service to run
+  web_server:
+    image: ubuntu:22.04
+    ulimits:
+      nproc: 50
+      
+    user: "1000:1000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+### ------------------------------------------------------- ###

@@ -2,10 +2,10 @@
 version: '3'
 services:
   app1:
-    image: myapp1:latest
+    image: ubuntu:latest
 
   app2:
-    image: myapp2:latest
+    image: ubuntu:latest
 
   app3:
-    image: myapp3:latest
+    image: ubuntu:latest
