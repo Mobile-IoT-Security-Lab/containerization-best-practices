@@ -3,7 +3,7 @@
 version: '3.7'
 services:
   web:
-    image: nginx:latest
+    image: alpine:3.14
     ports:
       - "80:80"
     read_only: true
