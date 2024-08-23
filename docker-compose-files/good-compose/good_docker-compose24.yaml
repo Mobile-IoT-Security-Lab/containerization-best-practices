@@ -1,24 +1,36 @@
-# Use a secure base image for building
-FROM python:3.9-slim
-
-# Metadata indicating image maintainer and source
-LABEL maintainer="yourname@example.com"
-LABEL source="https://github.com/yourusername/yourproject"
-
-# Install necessary packages
-RUN apt-get update && apt-get install -y \
-    gnupg \
-    && rm -rf /var/lib/apt/lists/*
-
-# Copy application code
-COPY . /app
-
-# Expose port for application
-EXPOSE 80
-
 ## -- Best practice 24: sign the Docker image with GPG key -- ##
-RUN gpg --import /path/to/your/private/key.asc
-RUN gpg --output /app/image.sig --detach-sig /app/Dockerfile
 
-# Start the application
-CMD ["python", "app.py"]
+services:
+  app:
+    image: alpine:3.19.0 # or myrepo/myapp:latest
+    container_name: my_app_container
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./app:/usr/src/app
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    restart: unless-stopped
+
+  # db:
+  #   image: mysql:5.7.35 # or myrepo/mydb:latest
+  #   container_name: my_db_container
+  #   environment:
+  #     POSTGRES_USER: exampleuser
+  #     POSTGRES_PASSWORD: examplepass
+  #   volumes:
+  #     - db_data:/var/lib/postgresql/data
+  #   logging:
+  #     driver: "json-file"
+  #     options:
+  #       max-size: "10m"
+  #       max-file: "3"
+  #   restart: unless-stopped
+
+volumes:
+  db_data:

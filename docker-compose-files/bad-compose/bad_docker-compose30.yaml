@@ -3,7 +3,7 @@ version: '3.8'
 
 services:
   web_server:
-    image: nginx:alpine
+    image: ubuntu:latest
     ports:
       - "80:80"  # Allows connections from any network interface
 ### ------------------------------------------------------------------------------------------------------------- ###

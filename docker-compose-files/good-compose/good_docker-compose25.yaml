@@ -1,9 +1,8 @@
-### --- Bad Practice 25: host system directories are not mounted on containers --- ###
-version: '3'
+### --- Best Practice 25: host system directories are not mounted on containers --- ###
 
 services:
   app:
-    image: ubuntu:latest
+    image: alpine:3.19.0
     volumes:
       - /app/data:/app/data
     command: bash

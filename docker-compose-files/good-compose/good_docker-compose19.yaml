@@ -1,9 +1,7 @@
-version: '3.8'
-
 ## -- Best practice 19: secure deployments -- ##
 services:
   myapp:
-    image: your-registry.example.com/myapp-web:1.0
+    image: alpine:3.19.0 # or your-registry.example.com/myapp-web:1.0
     ports:
       - "80:80"
     security_opt:
@@ -36,21 +34,21 @@ services:
       - "com.example.description=Securely deployed application"
       - "com.example.department=IT"
 
-  nginx:
-    image: nginx:1.20
-    ports:
-      - "8080:80"
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-    deploy:
-      replicas: 1
-      restart_policy:
-        condition: any
-    logging:
-      driver: json-file
-      options:
-        max-size: "10m"
-        max-file: "3"
-    labels:
-      - "com.example.description=Securely deployed Nginx"
-      - "com.example.department=IT"
+  # nginx:
+  #   image: nginx:1.20
+  #   ports:
+  #     - "8080:80"
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/nginx.conf:ro
+  #   deploy:
+  #     replicas: 1
+  #     restart_policy:
+  #       condition: any
+  #   logging:
+  #     driver: json-file
+  #     options:
+  #       max-size: "10m"
+  #       max-file: "3"
+  #   labels:
+  #     - "com.example.description=Securely deployed Nginx"
+  #     - "com.example.department=IT"

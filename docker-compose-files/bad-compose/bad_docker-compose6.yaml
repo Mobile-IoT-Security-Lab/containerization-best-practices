@@ -4,7 +4,7 @@ version: "3.8"
 
 services:
   web:
-    image: nginx:latest
+    image: ubuntu:latest
     environment:
-      - SECRET_KEY=my_super_secret_password
+      - SECRET_KEY="my_super_secret_password012344567890"
 ### --------------------------------------------------------------------------------------------------------------- ###

@@ -1,7 +1,6 @@
-version: '3.8'
 services:
   my-application:
-    image: my-application-image
+    image: alpine:3.19.0 
     ports:
       - "8080:80"
     deploy:

@@ -1,9 +1,8 @@
 ### --- Best Practice 29: Soft and Hard limit for file descriptors --- ###
-version: '3.8'
 
 services:
   web_server:
-    image: nginx:latest
+    image: alpine:3.19.0
     ulimits:
       nofile:
         soft: 1024  

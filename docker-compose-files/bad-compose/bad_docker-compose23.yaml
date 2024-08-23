@@ -3,9 +3,10 @@ version: '3.8'
 
 services:
   web:
+    platform: linux/arm64
+    image: nginx:latest
     build:
       context: .
-      dockerfile: Dockerfile
     ports:
       - "80:80"
     volumes:

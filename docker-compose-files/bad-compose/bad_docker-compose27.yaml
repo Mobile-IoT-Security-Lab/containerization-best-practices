@@ -3,7 +3,7 @@ version: '3.8'
 
 services:
   web:
-    image: nginx:latest
+    image: python:latest
     container_name: mywebapp
     ports:
       - "8080:80"

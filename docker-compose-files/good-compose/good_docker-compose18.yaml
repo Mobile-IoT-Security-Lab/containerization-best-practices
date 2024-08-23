@@ -1,8 +1,33 @@
-FROM ubuntu:20.04
-
 ## -- Best practice 18: pin the versions of the OS packages -- ##
-RUN apt-get update && apt-get install -y curl=7.68.0-1ubuntu2.6
 
-COPY myapp /usr/local/bin/myapp
+services:
+  web:
+    image: nginx:1.23.3-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./html:/usr/share/nginx/html:ro
+    networks:
+      - frontend
 
-CMD ["myapp"]
+  app:
+    image: nginx:1.23.3-alpine #alpine:3.19.0
+    depends_on:
+      - db
+    networks:
+      - frontend
+      - backend
+
+  db:
+    image: nginx:1.23.3-alpine #postgres:14.5-alpine
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - backend
+
+networks:
+  frontend:
+  backend:
+
+volumes:
+  db_data:

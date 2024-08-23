@@ -1,8 +1,6 @@
-version: '3.8'
-
 services:
   myapp:
-    image: myapp:latest
+    image: alpine:3.19.0
     cap_drop:
       - ALL  # Removes all abilities
     cap_add:

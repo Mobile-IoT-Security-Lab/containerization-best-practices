@@ -2,7 +2,7 @@
 
 services:
   web:
-    image: nginx:latest
+    image: ubuntu:latest
     ports:
       - "8080:80"
     volumes:
@@ -14,7 +14,7 @@ services:
     restart: always
 
   database:
-    image: mysql:latest
+    image: ubuntu:latest #mysql:latest
     volumes:
       - /host/mysql:/var/lib/mysql:shared
       - /host/mysql/config:/etc/mysql/conf.d:shared
@@ -22,8 +22,8 @@ services:
       MYSQL_ROOT_PASSWORD: password
     restart: always
 
-  redis:
-    image: redis:latest
-    volumes:
-      - /host/redis:/data:shared
-    restart: always
+  # redis:
+  #   image: redis:latest
+  #   volumes:
+  #     - /host/redis:/data:shared
+  #   restart: always

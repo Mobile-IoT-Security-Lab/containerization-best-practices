@@ -2,7 +2,7 @@
 
 services:
   web:
-    image: myapp
+    image: ubuntu
     ulimits:
       nproc: 1000
       nofile: 2048

@@ -2,6 +2,6 @@
 version: '3.8'
 services:
   myapp:
-    image: myapp-image
+    image: ubuntu 
     network_mode: host
 ### ---------------------------------------------------------- ###

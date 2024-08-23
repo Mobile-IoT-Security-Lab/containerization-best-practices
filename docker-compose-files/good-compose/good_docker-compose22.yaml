@@ -1,28 +1,44 @@
 ## -- Best practice 22: documenting image provenance effectively -- ##
 
-# Start with a specific and trusted base image
-FROM python:3.9-slim
+services:
+  app:
+    image: alpine:3.19.0 # or myorg/myapp:1.0.0
+    container_name: my_app_container
+    labels:
+      org.opencontainers.image.created: "2024-08-17T10:00:00Z"
+      org.opencontainers.image.authors: "Dev Team <devteam@myorg.com>"
+      org.opencontainers.image.version: "1.0.0"
+      org.opencontainers.image.revision: "abc123def456"
+      org.opencontainers.image.source: "https://github.com/myorg/myapp"
+      org.opencontainers.image.licenses: "MIT"
+      org.opencontainers.image.documentation: "https://docs.myorg.com/myapp"
+      org.opencontainers.image.base.name: "node:14-alpine"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./app:/usr/src/app
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
 
-# Metadata indicating image maintainer and source
-LABEL maintainer="yourname@example.com"
-LABEL source="https://github.com/yourusername/yourproject"
+  # db:
+  #   image: postgres:13.3
+  #   container_name: my_db_container
+  #   labels:
+  #     org.opencontainers.image.created: "2024-08-10T10:00:00Z"
+  #     org.opencontainers.image.authors: "DB Admin <dbadmin@myorg.com>"
+  #     org.opencontainers.image.version: "13.3"
+  #     org.opencontainers.image.revision: "def789ghi012"
+  #     org.opencontainers.image.source: "https://github.com/postgres/postgres"
+  #     org.opencontainers.image.licenses: "PostgreSQL"
+  #     org.opencontainers.image.documentation: "https://www.postgresql.org/docs/13/"
+  #     org.opencontainers.image.base.name: "postgres:13.3"
+  #   volumes:
+  #     - db_data:/var/lib/postgresql/data
+  #   restart: unless-stopped
+  #   environment:
+  #     POSTGRES_USER: exampleuser
+  #     POSTGRES_PASSWORD: examplepass
 
-# Install necessary packages with specific versions and sources
-RUN apt-get update && apt-get install -y \
-    nginx=1.20.* \
-    curl=7.74.* \
-    && rm -rf /var/lib/apt/lists/*
-
-# Copy application code with clear indication of its origin and version
-COPY . /app
-
-# Expose port for nginx
-EXPOSE 80
-
-# Start nginx with specified configuration and version
-CMD ["nginx", "-g", "daemon off;"]
-
-# Additional metadata documenting image version and build timestamp
-LABEL version="1.0"
-LABEL description="Web application using Python and nginx"
-LABEL build_date="2024-07-18"
+volumes:
+  db_data:

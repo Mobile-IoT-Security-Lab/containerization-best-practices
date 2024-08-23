@@ -1,9 +1,8 @@
 ### --- Best Practice 28: Ensure that CPU priority is set appropriately on containers --- ###
-version: '3.8'
 
 services:
   web_server:
-    image: nginx:alpine
+    image: alpine:3.19.0
     container_name: web_server
     deploy:
       resources:
@@ -11,15 +10,15 @@ services:
           cpus: '0.5'    # Limit CPU usage to 50% of a CPU
         reservations:
           cpus: '0.2'    # Reserve 20% of a CPU for this container
-  database:
-    image: mysql:5.7
-    container_name: database
-    environment:
-      MYSQL_ROOT_PASSWORD: example
-    deploy:
-      resources:
-        limits:
-          cpus: '1.0'    # Limit CPU usage to 100% of a CPU
-        reservations:
-          cpus: '0.5'    # Reserve 50% of a CPU for this container
+  # database:
+  #   image: mysql:5.7
+  #   container_name: database
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: example
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: '1.0'    # Limit CPU usage to 100% of a CPU
+  #       reservations:
+  #         cpus: '0.5'    # Reserve 50% of a CPU for this container
 ### ------------------------------------------------------------------------------------- ###

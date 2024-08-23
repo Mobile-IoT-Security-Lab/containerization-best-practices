@@ -25,16 +25,19 @@ cp $MY_PATH $BENCHMARK_PATH
 docker images | awk 'NR>1{print $3}' | xargs docker rmi -f
 docker container ls -a | awk 'NR>1{print $1}' | xargs docker rm -f
 
-# Run and build the docker-compose file
+# Build every image in the docker-compose file, but do not start them
 cd testing/dockerprova
-docker-compose up --build
+docker-compose up --build --no-start
 
 # Run the dockle tests
 echo; echo
 echo "\033[1m DOCKLE RESULTS for the $2 image: \033[0m"
-docker images | awk 'NR>1{print $1}' | xargs dockle
+docker images | awk 'NR>1{print $1}' | xargs dockle #--timeout 600s
 
 # Run the trivy tests
 echo; echo
 echo "\033[1m TRIVY RESULTS for the $2 image: \033[0m"
 docker images | awk 'NR>1{print $1}' | xargs trivy image
+
+# cd testing/dockerprova
+# docker-compose config --quiet && printf "OK\n" || printf "ERROR\n"

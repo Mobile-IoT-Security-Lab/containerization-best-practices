@@ -1,8 +1,7 @@
 ### --- Best Practice 5: Appending :ro to the end of the volume specifies that the volume is mounted read-only --- ###
-version: '3.7'
 services:
   web:
-    image: nginx:latest
+    image: alpine:3.19.0
     ports:
       - "80:80"
     volumes:

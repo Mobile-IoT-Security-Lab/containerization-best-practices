@@ -1,11 +1,18 @@
 ### --- Good Practice 34: Ensure that container health is checked at runtime --- ###
-version: '3'
 
 services:
-  app:
-    image: nginx:latest
-    healthcheck:
-      test: ["CMD", "curl", "--fail", "http://localhost:80"]
-      interval: 1m30s
-      timeout: 10s
-      retries: 3
+    web:
+        image: alpine:3.19.0
+        build:
+          context: .
+          # dockerfile: Dockerfile
+        ports:
+            - "5000:5000"
+        volumes:
+            - .:/code
+        healthcheck:
+          test: curl --fail http://localhost:5000/ || exit 1
+          interval: 40s
+          timeout: 30s
+          retries: 3
+          start_period: 60s

@@ -1,9 +1,8 @@
 ### --- Best Practice 27: limit memory usage --- ###
-version: '3.8'
 
 services:
   web:
-    image: nginx:latest
+    image: alpine:3.19.0
     container_name: mywebapp
     ports:
       - "8080:80"

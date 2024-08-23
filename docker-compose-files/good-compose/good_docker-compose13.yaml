@@ -1,9 +1,8 @@
 ### --- Best Practice 13: Run as a specific non-root user & Mount only the necessary directory --- ###
-version: '3.8'
 
 services:
   myservice:
-    image: myimage:latest
+    image: alpine:3.19.0
     user: "1000:1000"  
     volumes:
       - ./app:/usr/src/app  

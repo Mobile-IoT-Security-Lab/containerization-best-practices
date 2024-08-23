@@ -1,13 +1,13 @@
-### --- Bad Practice 28: CPU priority is  not set appropriately on containers --- ###
+### --- Bad Practice 28: CPU priority is not set appropriately on containers --- ###
 version: '3.8'
 
 services:
-  web_server:
-    image: nginx:alpine
-    container_name: web_server
+  # web_server:
+  #   image: ubuntu:latest
+  #   container_name: web_server
 
   database:
-    image: mysql:5.7
+    image: mysql:latest
     container_name: database
     environment:
       MYSQL_ROOT_PASSWORD: example

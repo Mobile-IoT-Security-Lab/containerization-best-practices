@@ -1,8 +1,7 @@
-### --- Bad Practice 32: No host devices are exposed to the container --- ###
-version: '3'
+### --- Best Practice 32: No host devices are exposed to the container --- ###
 
 services:
   app:
-    image: ubuntu:latest
+    image: alpine:3.19.0
     command: bash
 ### --------------------------------------------------------------------- ###

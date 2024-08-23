@@ -1,14 +1,57 @@
-FROM ubuntu:20.04
-
 ## -- Best practice 15: create a non-root user and group -- ##
-RUN groupadd -r myuser && useradd -r -g myuser myuser
 
-WORKDIR /home/myuser
+services:
+  web:
+    image: alpine:3.19.0
+    container_name: nginx_web
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./html:/usr/share/nginx/html:ro
+    user: "1000:1000" # Run as a non-root user (e.g., UID 1000, GID 1000)
+    read_only: true   # Make the filesystem read-only
+    restart: always
+    networks:
+      - webnet
+    security_opt:
+      - no-new-privileges:true  # Prevent privilege escalation
 
-COPY myapp /usr/local/bin/myapp
-RUN chown -R myuser:myuser /usr/local/bin/myapp
+  app:
+    image: alpine:3.19.0
+    container_name: my_app
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./app:/usr/src/app:ro
+    user: "1000:1000" # Non-root user, matching the UID/GID of the application files
+    read_only: true   # Read-only filesystem
+    restart: always
+    # depends_on:
+    #   - db
+    networks:
+      - webnet
+    security_opt:
+      - no-new-privileges:true
 
-# Switch to the non-root user
-USER myuser
+  # db:
+  #   image: postgres:15
+  #   container_name: postgres_db
+  #   environment:
+  #     POSTGRES_USER: appuser
+  #     POSTGRES_PASSWORD: secretpassword
+  #     POSTGRES_DB: appdb
+  #   volumes:
+  #     - db_data:/var/lib/postgresql/data
+  #   user: "999:999" # Non-root user, typically PostgreSQL runs with UID/GID 999
+  #   restart: always
+  #   networks:
+  #     - webnet
+  #   security_opt:
+  #     - no-new-privileges:true
 
-CMD ["myapp"]
+volumes:
+  db_data:
+
+networks:
+  webnet:

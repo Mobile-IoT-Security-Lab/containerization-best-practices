@@ -1,7 +1,30 @@
-FROM ubuntu:latest
-
 ### --- Best Practice 33: Mount a non-sensitive directory --- ###
-VOLUME ["/app/data"]
-### --------------------------------------------------------- ###
 
-CMD ["bash"]
+services:
+  app:
+    image: alpine:3.19.0
+    container_name: my_app_container
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "8080:8080"
+    volumes:
+      - type: bind
+        source: ./app
+        target: /usr/src/app
+        bind:
+          propagation: rprivate  # Restricts mount propagation to the container only
+    restart: unless-stopped
+
+  # db:
+  #   image: postgres:13
+  #   container_name: my_db_container
+  #   environment:
+  #     POSTGRES_USER: exampleuser
+  #     POSTGRES_PASSWORD: examplepass
+  #   volumes:
+  #     - db_data:/var/lib/postgresql/data:rprivate  # Restricts mount propagation to the container only
+  #   restart: unless-stopped
+
+volumes:
+  db_data:

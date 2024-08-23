@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: evil-registry.io/evil-image:latest
+    image: esolang/evil # surrogate of "evil-registry.io/evil-image:latest"
     container_name: evil-container
   web:
     build:

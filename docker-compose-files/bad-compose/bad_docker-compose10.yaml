@@ -2,6 +2,6 @@
 version: '3.8'
 services:
   my-application:
-    image: my-application-image
+    image: ubuntu:latest
     ports:
       - "8080:80"

@@ -1,8 +1,7 @@
 ### --- Best Practice 8: Do not share the Host’s Network Namespace --- ###
-version: '3.8'
 services:
   myapp:
-    image: myapp-image
+    image: alpine:3.19.0
     ports:
       - "80:8080"
 ### ------------------------------------------------------------------ ###

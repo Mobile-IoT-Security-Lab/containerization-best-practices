@@ -1,15 +1,12 @@
-version: '3.8'
 
 services:
   web:
-    image: myapp
+    image: alpine:3.19.0
     ulimits:
       nofile:
-        name: nofile
         soft: 1024
         hard: 2048
       nproc:
-        name: nproc
         soft: 1000
         hard: 2000
 ## -- Best practice 31: Set proper ulimits in Docker Compose files -- ##

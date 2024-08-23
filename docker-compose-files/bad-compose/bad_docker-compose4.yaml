@@ -1,9 +1,9 @@
-### --- Bad Practice 4: the web container (nginx) does not have the filesystem set to read-only, 
+### --- Bad Practice 4: the web container (ubuntu) does not have the filesystem set to read-only, 
 ### --- meaning it can write to any part of the filesystem. --- ###
 version: '3.7'
 services:
   web:
-    image: nginx:latest
+    image: ubuntu:latest
     ports:
       - "80:80"
 ### ----------------------------------------------------------------------------------------- ###

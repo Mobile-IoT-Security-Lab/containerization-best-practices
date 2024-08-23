@@ -1,8 +1,45 @@
-## -- Best practice 17: pin versions in Dockerfile -- ##
-FROM ubuntu:20.04
+## -- Best practice 17: pin versions -- ##
 
-RUN apt-get update && apt-get install -y curl=7.68.0-1ubuntu2.6
+services:
+  web:
+    image: mariadb:10.6.15 # Pinned to a specific version
+    ports:
+      - "80:80"
+    volumes:
+      - ./html:/usr/share/nginx/html:ro
+    networks:
+      - frontend
+    restart: always
 
-COPY myapp /usr/local/bin/myapp
+  app:
+    image: mariadb:10.6.15 #lscr.io/linuxserver/mariadb:latest  # Pinned to a specific version
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./app:/usr/src/app
+    working_dir: /usr/src/app
+    networks:
+      - frontend
+      - backend
+    depends_on:
+      - db
+    restart: on-failure
 
-CMD ["myapp"]
+  db:
+    image: mariadb:10.6.15 #arm64v8/mariadb:10.6.15
+    environment:
+      POSTGRES_DB: app_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  db_data:
+
+networks:
+  frontend:
+  backend:

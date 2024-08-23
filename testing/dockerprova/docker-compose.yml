@@ -1,12 +1,12 @@
-### --- Best Practice 4: sets the container filesystem to read-only, preventing any changes to the container files.
-### --- Mounts a temporary (in memory) filesystem in the /tmp path, allowing temporary write operations. --- ###
-version: '3.7'
+### --- Best Practice 35: Ensure that Docker's default bridge "docker0" is not used --- ###
+
 services:
-  web:
-    image: alpine:3.14
-    ports:
-      - "80:80"
-    read_only: true
-    tmpfs:
-      - /tmp
- ### ------------------------------------------------------------------------------------------------------- ###
+  app:
+    image: alpine:3.19.0
+    command: bash
+    networks:
+      - my_custom_network
+
+networks:
+  my_custom_network:
+    driver: bridge

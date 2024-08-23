@@ -1,6 +1,41 @@
-# Use a minimal and secure base image
-FROM alpine:latest
-
 ## -- Best practice 21:  Ensure Docker daemon logging level is set to info -- ##
-RUN mkdir -p /etc/docker
-RUN echo '{ "log-driver": "json-file", "log-opts": { "max-size": "10m", "max-file": "3", "labels": "production_status" }}' > /app/log.json example,tell me
+
+services:
+  app:
+    image: alpine:3.19.0
+    container_name: my_app_container
+    restart: unless-stopped
+    environment:
+      - LOG_LEVEL=info
+    volumes:
+      - ./app:/usr/src/app
+      - /etc/docker/daemon.json:/etc/docker/daemon.json:ro
+    ports:
+      - "8080:8080"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    command: >
+      bash -c "docker daemon --log-level=$LOG_LEVEL && your_app_command"
+
+  # # Additional services can be added here
+  # db:
+  #   image: postgres:5.7
+  #   container_name: my_db_container
+  #   restart: unless-stopped
+  #   environment:
+  #     POSTGRES_USER: user
+  #     POSTGRES_PASSWORD: password
+  #     POSTGRES_DB: app_db
+  #   volumes:
+  #     - db_data:/var/lib/postgresql/data
+  #   logging:
+  #     driver: "json-file"
+  #     options:
+  #       max-size: "10m"
+  #       max-file: "3"
+      
+volumes:
+  db_data:

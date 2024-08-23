@@ -2,7 +2,7 @@
 
 services:
   myapp:
-    image: myapp:latest
+    image: ubuntu:latest
     cap_add:
       - SYS_ADMIN  # Adds a privileged ability
     network_mode: "host"  # It uses the host network, exposing the container to the host's network

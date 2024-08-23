@@ -1,13 +1,11 @@
 ## -- Best practice 20: using a trusted registry with strict access controls to store the Docker image and SBOM file -- ##
 
-version: '3.8'
-
 services:
   myapp:
     build:
       context: .
       dockerfile: Dockerfile
-    image: your-registry.example.com/myapp-web:1.0
+    image: alpine:3.19.0 # or your-registry.example.com/myapp-web:1.0
     container_name: myapp_container
     ports:
       - "80:80"
