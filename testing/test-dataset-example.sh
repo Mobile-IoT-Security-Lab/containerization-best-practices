@@ -39,5 +39,6 @@ echo; echo
 echo "\033[1m TRIVY RESULTS for the $2 image: \033[0m"
 docker images | awk 'NR>1{print $1}' | xargs trivy image
 
-# cd testing/dockerprova
-# docker-compose config --quiet && printf "OK\n" || printf "ERROR\n"
+# echo "\033[1m\n🐳docker config result: \033[0m"
+docker-compose config --quiet && printf "🐳✅OK\n" || printf "🐳❌ERROR\n"
+cd ../..

@@ -2,7 +2,7 @@
 
 # RUN ME with "sh test-aux <docker-compose id>"
 
-if [[ $1 == 36 ]]; then
+if [[ $1 == 37 ]]; then
    exit
 fi
 
