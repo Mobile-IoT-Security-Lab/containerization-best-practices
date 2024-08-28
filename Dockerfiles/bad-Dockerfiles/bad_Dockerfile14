@@ -1,15 +1,5 @@
-### --- Bad Practice 14: Do not tag the version of an image explicitly --- ###
-FROM python
-### ---------------------------------------------------------------------- ###
+FROM busybox
 
-# Set the working directory
-WORKDIR /usr/src/app
-
-# Copy the requirements.txt file into the container
-COPY requirements.txt ./
-
-# Install the dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Specify the command to run the application
-CMD ["python", "app.py"]
+### --- Bad Practice 14: Do not use WORKDIR to switch to a directory --- ###
+RUN cd /usr/src/app && git clone git@github.com:lukasmartinelli/hadolint.git 
+### -------------------------------------------------------------------- ###
