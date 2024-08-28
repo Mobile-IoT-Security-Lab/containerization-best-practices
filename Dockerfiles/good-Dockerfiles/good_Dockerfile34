@@ -1,5 +1,0 @@
-FROM busybox
-
-### --- Best Practice 34: Pin versions in apt get install --- ###
-RUN apt-get install python=2.7
-### --------------------------------------------------------- ###
