@@ -1,11 +1,22 @@
-# Good Example Dockerfile
+# Use a basic Python image
+FROM python:3.9
 
-FROM nginx:alpine
+# Set the working directory
+WORKDIR /usr/src/app
 
-# Copy configuration and content
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY index.html /usr/share/nginx/html/index.html
+# Copy the requirements.txt file into the container
+COPY requirements.txt ./
 
-## -- Best practice 22: set the root filesystem to be immutable and read-only (ro) -- ##
-CMD ["sh", "-c", "mount -o remount,ro / && nginx -g 'daemon off;'"]
-## ---------------------------------------------------------------------------------- ##
+### --- Best Practice 22: Removing unnecessary dependencies --- ###
+RUN apt-get update \
+    && apt-get -y install --no-install-recommends \
+    openjdk-8-jdk ssh vim
+### ----------------------------------------------------------- ###
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application code into the container
+COPY . .
+
+# Specify the command to run the application
+CMD ["python", "app.py"]
