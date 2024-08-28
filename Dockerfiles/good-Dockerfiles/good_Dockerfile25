@@ -1,8 +1,20 @@
-## -- Best practice 25: Dockerfile example (using dind) -- ##
-FROM docker:20.10-dind
+# Use a basic Python image
+FROM python:3.9
 
-# Expose Docker daemon with TLS (Example, requires additional setup)
-# CMD ["dockerd", "--host=tcp://0.0.0.0:2376", "--tlsverify", "--tlscacert=/certs/ca.pem", "--tlscert=/certs/server-cert.pem", "--tlskey=/certs/server-key.pem"]
+# Set the working directory
+WORKDIR /usr/src/app
 
-# Start Docker-in-Docker daemon (secure version commented out for example)
-CMD ["dockerd"]
+# Copy the requirements.txt file into the container
+COPY requirements.txt ./
+
+# Install the dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+### --- Best Practice 25:  Copy only necessary application code into the container --- ###
+COPY app.py ./
+COPY src/ ./src/
+COPY config/ ./config/
+### ---------------------------------------------------------------------------------- ###
+
+# Specify the command to run the application
+CMD ["python", "app.py"]
