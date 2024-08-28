@@ -1,5 +1,0 @@
-FROM busybox
-
-### --- Bad Practice 34: Do not pin versions in apt get install --- ###
-RUN apt-get install python
-### --------------------------------------------------------------- ###
