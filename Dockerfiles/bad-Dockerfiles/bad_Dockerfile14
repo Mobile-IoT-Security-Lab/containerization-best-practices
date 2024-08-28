@@ -1,5 +1,6 @@
-# Use a basic Python image
-FROM python:3.9
+### --- Bad Practice 14: Do not tag the version of an image explicitly --- ###
+FROM python
+### ---------------------------------------------------------------------- ###
 
 # Set the working directory
 WORKDIR /usr/src/app
@@ -9,16 +10,6 @@ COPY requirements.txt ./
 
 # Install the dependencies
 RUN pip install --no-cache-dir -r requirements.txt
-
-### --- Bad Practice 14: Adding sensitive data --- ###
-ENV DATABASE_USER=admin
-ENV DATABASE_PASSWORD=mysecretpassword
-### ---------------------------------------------- ###
-
-RUN ./get-data.sh
-
-# Copy the rest of the application code into the container
-COPY . .
 
 # Specify the command to run the application
 CMD ["python", "app.py"]
