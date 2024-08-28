@@ -1,15 +1,6 @@
-### --- Best Practice 14: Tag the version of an image explicitly --- ###
-FROM python:3.9.7
-### ---------------------------------------------------------------- ###
+FROM busybox
 
-# Set the working directory
+### --- Best Practice 14: Use WORKDIR to switch to a directory --- ###
 WORKDIR /usr/src/app
-
-# Copy the requirements.txt file into the container
-COPY requirements.txt ./
-
-# Install the dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Specify the command to run the application
-CMD ["python", "app.py"]
+RUN git clone git@github.com:lukasmartinelli/hadolint.git
+### -------------------------------------------------------------- ###
