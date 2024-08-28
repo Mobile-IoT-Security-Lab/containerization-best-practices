@@ -1,26 +1,15 @@
-## -- Best practice 8: Dockerfile with separate instructions for better layer caching -- ##
+### --- Best Practice 8: Tag the version of an image explicitly --- ###
+FROM python:3.9.7
+### ---------------------------------------------------------------- ###
 
-# Use a minimal base image (alpine is minimal linux distribution)
-FROM alpine:3.20.0
+# Set the working directory
+WORKDIR /usr/src/app
 
-# Update package lists
-RUN apk update
+# Copy the requirements.txt file into the container
+COPY requirements.txt ./
 
-# Install necessary packages individually
-RUN apk add --no-cache \
-    package1 \
-    package2 \
-    package3
+# Install the dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Set environment variables individually
-ENV ENV_VAR1=value1
-ENV ENV_VAR2=value2
-
-# Copy application files
-COPY . /app
-
-# Set working directory
-WORKDIR /app
-
-# Start application
-CMD ["./start.sh"]
+# Specify the command to run the application
+CMD ["python", "app.py"]
