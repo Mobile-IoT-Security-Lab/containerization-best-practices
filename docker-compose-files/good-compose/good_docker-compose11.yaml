@@ -1,9 +1,12 @@
+### --- Best Practice 11: Ensure that Docker's default bridge "docker0" is not used --- ###
+
 services:
-  myapp:
+  app:
     image: alpine:3.19.0
-    cap_drop:
-      - ALL  # Removes all abilities
-    cap_add:
-      - NET_ADMIN  # Add only necessary NET_ADMIN capacity
-    security_opt:
-      - no-new-privileges:true  # Prevents escalation of privilege
+    command: bash
+    networks:
+      - my_custom_network
+
+networks:
+  my_custom_network:
+    driver: bridge

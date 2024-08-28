@@ -1,7 +1,0 @@
-### --- Best Practice 32: No host devices are exposed to the container --- ###
-
-services:
-  app:
-    image: alpine:3.19.0
-    command: bash
-### --------------------------------------------------------------------- ###

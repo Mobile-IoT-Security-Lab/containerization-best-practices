@@ -1,7 +1,7 @@
-# "bad" example: no resource requests
-version: '3.8'
+### --- Bad Practice 10: data exchanged between containers is NOT encrypted on different nodes on the overlay network --- ###
+version: '3'
+
 services:
-  my-application:
-    image: ubuntu:latest
-    ports:
-      - "8080:80"
+  app:
+    image: ubuntu
+    command: bash

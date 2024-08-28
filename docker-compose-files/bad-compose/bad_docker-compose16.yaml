@@ -1,20 +1,6 @@
-### --- Bad Practice 16: do not ensure network traffic is restricted between containers on the default bridge --- ###
-version: '3.8'
+### --- Bad Practice 16: Do not ensure that container health is checked at runtime --- ###
+version: '3'
 
 services:
-  web:
+  app:
     image: ubuntu:latest
-    ports:
-      - "80:80"
-    networks:
-      - default
-
-  db:
-    image: postgres:latest
-    networks:
-      - default
-
-networks:
-  default:
-    driver: bridge
-### -------------------------------------------------------------------------------------------------------------- ###

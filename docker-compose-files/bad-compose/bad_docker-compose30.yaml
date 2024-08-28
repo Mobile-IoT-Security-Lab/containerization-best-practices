@@ -1,9 +1,0 @@
-### --- Bad Practice 30: Do not ensure that incoming container traffic is bound to a specific host interface --- ###
-version: '3.8'
-
-services:
-  web_server:
-    image: ubuntu:latest
-    ports:
-      - "80:80"  # Allows connections from any network interface
-### ------------------------------------------------------------------------------------------------------------- ###

@@ -1,7 +1,0 @@
-### --- Best Practice 30: Ensure that incoming container traffic is bound to a specific host interface --- ###
-services:
-  web_server:
-    image: alpine:3.19.0
-    ports:
-      - "192.168.1.10:80:80"  
-### ------------------------------------------------------------------------------------------------------ ###

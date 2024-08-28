@@ -1,28 +1,9 @@
-### --- Best Practice 36: Ensure data exchanged between containers are encrypted on different nodes on the overlay network --- ###
-
-networks:
-  secure-overlay:
-    driver: overlay
-    driver_opts:
-      encrypted: "true"  # Ensures the network is encrypted
+## -- Best practice 18: pin the versions of the OS packages -- ##
 
 services:
-  service1:
-    image: alpine:3.19.0
-    networks:
-      - secure-overlay
-    deploy:
-      replicas: 2  # Example: 2 replicas on different nodes
-      placement:
-        constraints: [node.role == worker]
-
-  service2:
-    image: alpine:3.19.0
-    networks:
-      - secure-overlay
-    deploy:
-      replicas: 2  # Example: 2 replicas on different nodes
-      placement:
-        constraints: [node.role == worker]
-
-# You can add more services here
+  grafana:
+    image: grafana/grafana:11.2.0-ubuntu
+    ports:
+      - "8000:8000"
+    volumes:
+      - /app/data

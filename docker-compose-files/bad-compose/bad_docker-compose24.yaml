@@ -1,13 +1,9 @@
-## -- Bad practice 24: do not sign the Docker image with GPG key -- ##
-version: '3'
+### --- Bad Practice 24: Do not ensure that incoming container traffic is bound to a specific host interface --- ###
+version: '3.8'
+
 services:
-  web:
-    image: python:3.7
-    build:
-      context: .
-      # dockerfile: Dockerfile
+  web_server:
+    image: ubuntu:latest
     ports:
-      - "80:80"
-    volumes:
-      - .:/app
-    command: python /app/app.py
+      - "80:80"  # Allows connections from any network interface
+### ------------------------------------------------------------------------------------------------------------- ###

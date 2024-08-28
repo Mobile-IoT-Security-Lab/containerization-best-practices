@@ -1,10 +1,11 @@
 ### --- Best Practice 0: limit capabilities --- ###
-version: '3.8'  # Specify the version of the Docker Compose file
 
 services:
   example_service:
-    image: alpine
+    image: alpine:3.19.0  # Specify the image to use
     cap_drop:
       - ALL  # Drop all capabilities
     cap_add:
       - CHOWN  # Add the necessary capabilities for the service to run
+    security_opt:
+      - no-new-privileges:true  # Prevents escalation of privilege

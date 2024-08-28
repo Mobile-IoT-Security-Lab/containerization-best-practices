@@ -1,14 +1,10 @@
-### --- Bad Practice 23 --- ###
-version: '3.8'
+### --- Bad Practice 23: host's /dev/tty0 device is exposed to the container with read, write and mknod permissions --- ###
+version: '3'
 
 services:
-  web:
-    platform: linux/arm64
-    image: nginx:latest
-    build:
-      context: .
-    ports:
-      - "80:80"
-    volumes:
-      - .:/app
-    command: ["nginx", "-g", "daemon off;"]
+  app:
+    image: ubuntu:latest
+    devices:
+      - "/dev/tty0:/dev/tty0:rwm"
+    command: bash
+### ------------------------------------------------------------------------------------------------------------------- ###

@@ -17,13 +17,13 @@ services:
 ## -- Best practice 2: be mindful of inter-container connectivity -- ##
 networks:
   app1_net:
+    # internal: false
     driver: bridge
 
   app2_net:
+    # internal: false
     driver: bridge
 
   app3_net:
+    # internal: false
     driver: bridge
-
-  internal_net:
-    internal: false

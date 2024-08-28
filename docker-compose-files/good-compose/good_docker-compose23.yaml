@@ -1,42 +1,7 @@
-## -- Best practice 23: software Bill of Materials (SBOM) metadata -- ##
+### --- Best Practice 23: No host devices are exposed to the container --- ###
 
 services:
   app:
     image: alpine:3.19.0
-    container_name: my_app_container
-    build:
-      # context: ./app
-      args:
-        - NODE_ENV=production
-    environment:
-      - NODE_ENV=production
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./app:/usr/src/app
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
-    restart: unless-stopped
-    command: |
-      sh -c "syft . -o json > /usr/src/app/sbom.json && npm start"
-
-  # db:
-  #   image: postgres:13
-  #   container_name: my_db_container
-  #   environment:
-  #     POSTGRES_USER: exampleuser
-  #     POSTGRES_PASSWORD: examplepass
-  #   volumes:
-  #     - db_data:/var/lib/postgresql/data
-  #   logging:
-  #     driver: "json-file"
-  #     options:
-  #       max-size: "10m"
-  #       max-file: "3"
-  #   restart: unless-stopped
-
-volumes:
-  db_data:
+    command: bash
+### --------------------------------------------------------------------- ###

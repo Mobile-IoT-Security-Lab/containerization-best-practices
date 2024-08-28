@@ -1,4 +1,3 @@
-version: '3.7'
 
 services:
   web:
@@ -6,4 +5,4 @@ services:
     ports:
       - "8080:8000"
     security_opt:
-      - no-new-privileges: true
+      - no-new-privileges: true ### --- Best Practice 1: prevent in-container privilege escalation --- ###

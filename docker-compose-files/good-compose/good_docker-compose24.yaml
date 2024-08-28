@@ -1,36 +1,7 @@
-## -- Best practice 24: sign the Docker image with GPG key -- ##
-
+### --- Best Practice 24: Ensure that incoming container traffic is bound to a specific host interface --- ###
 services:
-  app:
-    image: alpine:3.19.0 # or myrepo/myapp:latest
-    container_name: my_app_container
-    environment:
-      - NODE_ENV=production
+  web_server:
+    image: alpine:3.19.0
     ports:
-      - "8080:8080"
-    volumes:
-      - ./app:/usr/src/app
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
-    restart: unless-stopped
-
-  # db:
-  #   image: mysql:5.7.35 # or myrepo/mydb:latest
-  #   container_name: my_db_container
-  #   environment:
-  #     POSTGRES_USER: exampleuser
-  #     POSTGRES_PASSWORD: examplepass
-  #   volumes:
-  #     - db_data:/var/lib/postgresql/data
-  #   logging:
-  #     driver: "json-file"
-  #     options:
-  #       max-size: "10m"
-  #       max-file: "3"
-  #   restart: unless-stopped
-
-volumes:
-  db_data:
+      - "192.168.1.10:80:80"  
+### ------------------------------------------------------------------------------------------------------ ###

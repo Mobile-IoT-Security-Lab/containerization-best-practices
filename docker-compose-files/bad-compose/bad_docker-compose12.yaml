@@ -1,4 +1,4 @@
-# "bad" practice: no specific labels
+# "bad" practice 12: no specific labels
 
 services:
   web:

@@ -1,15 +1,28 @@
+### --- Best Practice 10: Ensure data exchanged between containers are encrypted on different nodes on the overlay network --- ###
+
+networks:
+  secure-overlay:
+    driver: overlay
+    driver_opts:
+      encrypted: "true"  # Ensures the network is encrypted
+
 services:
-  my-application:
-    image: alpine:3.19.0 
-    ports:
-      - "8080:80"
+  service1:
+    image: alpine:3.19.0
+    networks:
+      - secure-overlay
     deploy:
-      resources:
-        reservations:
-## -- Best practice 21: requesting resource limits -- ##
-          cpus: '0.5'  # Request 0.5 CPU cores
-          memory: '256M'  # Request 256MB memory
-        limits:
-          cpus: '1.0'  # Limit to 1 CPU core
-          memory: '512M'  # Limit memory to 512MB
-## -------------------------------------------------- ##
+      replicas: 2  # Example: 2 replicas on different nodes
+      placement:
+        constraints: [node.role == worker]
+
+  service2:
+    image: alpine:3.19.0
+    networks:
+      - secure-overlay
+    deploy:
+      replicas: 2  # Example: 2 replicas on different nodes
+      placement:
+        constraints: [node.role == worker]
+
+# You can add more services here

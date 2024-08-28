@@ -1,33 +1,9 @@
 ## -- Best practice 18: pin the versions of the OS packages -- ##
 
 services:
-  web:
-    image: nginx:1.23.3-alpine
+  grafana:
+    image: grafana/grafana:11.2.0-ubuntu
     ports:
-      - "80:80"
+      - "8000:8000"
     volumes:
-      - ./html:/usr/share/nginx/html:ro
-    networks:
-      - frontend
-
-  app:
-    image: nginx:1.23.3-alpine #alpine:3.19.0
-    depends_on:
-      - db
-    networks:
-      - frontend
-      - backend
-
-  db:
-    image: nginx:1.23.3-alpine #postgres:14.5-alpine
-    volumes:
-      - db_data:/var/lib/postgresql/data
-    networks:
-      - backend
-
-networks:
-  frontend:
-  backend:
-
-volumes:
-  db_data:
+      - /app/data

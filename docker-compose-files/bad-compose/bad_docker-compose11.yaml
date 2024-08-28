@@ -1,8 +1,7 @@
-# Bad practice 11: adding privileged capabilities
+### --- Bad Practice 11: Docker's default bridge "docker0" is  used --- ###
+version: '3'
 
 services:
-  myapp:
-    image: ubuntu:latest
-    cap_add:
-      - SYS_ADMIN  # Adds a privileged ability
-    network_mode: "host"  # It uses the host network, exposing the container to the host's network
+  app:
+    image: ubuntu
+    command: bash

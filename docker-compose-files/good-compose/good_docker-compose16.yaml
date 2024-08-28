@@ -1,23 +1,18 @@
-### --- Best Practice 16: Ensure network traffic is restricted between containers on the default bridge --- ###
-# Web and db containers use separate networks (frontend and backend), so they cannot communicate directly with each other. 
-# Only containers in the same network can communicate with each other.
+### --- Good Practice 16: Ensure that container health is checked at runtime --- ###
 
 services:
-  web:
-    image: alpine:3.19.0
-    ports:
-      - "80:80"
-    networks:
-      - frontend
-
-  db:
-    image: alpine:3.19.0
-    networks:
-      - backend
-
-networks:
-  frontend:
-    driver: bridge
-  backend:
-    driver: bridge
-### ------------------------------------------------------------------------------------------------------- ###
+    web:
+        image: alpine:3.19.0
+        build:
+          context: .
+          # dockerfile: Dockerfile
+        ports:
+            - "5000:5000"
+        volumes:
+            - .:/code
+        healthcheck:
+          test: curl --fail http://localhost:5000/ || exit 1
+          interval: 40s
+          timeout: 30s
+          retries: 3
+          start_period: 60s
