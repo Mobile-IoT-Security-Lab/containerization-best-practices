@@ -1,9 +1,5 @@
-# Bad Example Dockerfile
+FROM busybox
 
-FROM ubuntu:latest
-
-# Install necessary packages
-RUN apt-get update && apt-get install -y 
-
-# No SECCOMP profile specified, relying on default
-CMD ["nginx"]
+### --- Bad Practice 17: Do not pin versions in apt get install --- ###
+RUN apt-get install python
+### --------------------------------------------------------------- ###
