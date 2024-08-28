@@ -1,21 +1,14 @@
-# Use a basic Python image
-FROM python:3.9
+FROM ubuntu:20.04
 
-# Set the working directory
-WORKDIR /usr/src/app
+RUN apt-get update && apt-get install -y curl=7.68.0-1ubuntu2.6
 
-# Copy the requirements.txt file into the container
-COPY requirements.txt ./
+### --- Bad Practice 19: Use curl command --- ###
+RUN curl -sL https://example.com/install.sh | bash
+### ----------------------------------------- ###
 
-# Install the dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+COPY myapp /usr/local/bin/
 
-# Copy the rest of the application code into the container
-COPY . .
+CMD ["/usr/local/bin/myapp"]
 
-### --- Bad Practice 19: Mount sensitive directory from the host --- ###
-VOLUME ["/etc"]
-### ---------------------------------------------------------------- ###
 
-# Specify the command to run the application
-CMD ["python", "app.py"]
+#Bad example: curl bashing: downloading and executing a script directly
