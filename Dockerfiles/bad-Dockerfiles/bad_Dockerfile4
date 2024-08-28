@@ -1,15 +1,4 @@
-# Use a basic Python image
-FROM python:3.9
-
-# Set the working directory
-WORKDIR /usr/src/app
-
-### --- Bad Practice 4: Use ADD to extract a local file ---###
-ADD file.tar.gz .
-###----------------------------------------###
-
-#Copy the rest of the application code into the container
-COPY . .
-
-# Specifica il comando per avviare l'applicazione
-CMD ["python", "app.py"]
+FROM busybox
+### --- Bad Practice 38: Use sudo command --- ###
+RUN sudo apt-get install
+### ----------------------------------------- ###
