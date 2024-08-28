@@ -1,17 +1,4 @@
-# Use a basic Python image
-FROM python:3.9
-
-# Set the working directory
-WORKDIR /usr/src/app
-
-### --- Best practice 4: Use COPY and RUN to extract a local file ---###
-COPY file.tar.gz .
-
-RUN tar -xzf file.tar.gz
-###------------------------------------------------------------------###
-
-#Copy the rest of the application code into the container
-COPY . .
-
-# Specifica il comando per avviare l'applicazione
-CMD ["python", "app.py"]
+FROM alpine:3.20
+### --- Best Practice 38: Do not use sudo command --- ###
+RUN apt-get install
+### ------------------------------------------------- ###
